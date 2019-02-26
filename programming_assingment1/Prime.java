@@ -1,5 +1,6 @@
 // Soliman Alnaizy - so365993
-// Parallel Processing spring 2019
+// Parallel Processing - Primes - Spring 2019
+// Finds the number of primes from 1 - n;
 
 import java.io.*;
 import java.util.*;
@@ -13,7 +14,7 @@ public class Prime extends Thread
 	public static boolean [] primeList;
 
 	// Starts the thread
-	public synchronized void run()
+	public void run()
 	{
 		checkPrimes();
 	}
@@ -25,7 +26,7 @@ public class Prime extends Thread
 		int current;
 		int sqrtn = (int) Math.sqrt(primeList.length);
 
-		while (counter.intValue() < sqrtn)
+		while (counter.intValue() <= sqrtn)
 		{
 			current = counter.getAndIncrement();
 
@@ -34,7 +35,6 @@ public class Prime extends Thread
 			else
 				for (int i = 2 * current; i < primeList.length; i += current)
 					primeList[i] = true;
-
 		}
 	}
 
@@ -43,6 +43,7 @@ public class Prime extends Thread
 	{
 		long sum = 0;
 		int nPrimes = 0;
+		int [] last = new int[10];
 
 		// Count the index if it's false
 		for (int i = 0; i < primeList.length; i++)
@@ -65,13 +66,11 @@ public class Prime extends Thread
 
 		// Printing since the array starts at 0
 		while (lastTen < 10 && i > 0)
-		{
 			if (!primeList[i--])
-			{
-				lastTen++;
-				print.print((i + 1) + ((lastTen == 10) ? "." : ", "));
-			}
-		}
+				last[lastTen++] = i + 1;
+
+		for (i = 9; i >= 0; i--)
+			print.print(last[i] + ((i == 0) ? "." : ", "));
 
 		print.close();
 	}
