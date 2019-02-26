@@ -1,3 +1,6 @@
+// A simple test case class I created to test the SuperAwesomeAtomicStack class
+// ... it's just a frequency array to make sure that each number is being popped once.
+
 import java.io.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
