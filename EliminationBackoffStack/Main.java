@@ -7,7 +7,7 @@ public class Main extends Thread
 {
     public static EBOStack<Integer> s = new EBOStack<>();
     public static AtomicInteger counter = new AtomicInteger(0);
-    public static final int CALLS = 10000, THREADS = 1;
+    public static final int CALLS = 10000, THREADS = 5;
     public static int [] pusharray = new int[CALLS];
     public static int [] poparray = new int[CALLS];
 
